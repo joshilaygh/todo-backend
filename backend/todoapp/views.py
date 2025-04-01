@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
@@ -46,12 +46,14 @@ class DashboardView(APIView):
         }, 200)
     
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def add_todo(request):
     if not request.user.is_authenticated:
         return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
 
     serializer = TodoSerializer(data=request.data)
     if serializer.is_valid():
+        serializer.save(user=request.user)  # Save with the logged-in user
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
