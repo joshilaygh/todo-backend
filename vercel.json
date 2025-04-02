@@ -14,7 +14,16 @@
       "src": "/(.*)",
       "dest": "backend/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DEBUG": "False",
+    "SECRET_KEY": "@secret-key",
+    "DB_NAME": "@db-name",
+    "DB_USER": "@db-user",
+    "DB_PASSWORD": "@db-password",
+    "DB_HOST": "@db-host",
+    "DB_PORT": "@db-port"
+  }  
 }
  
  
