@@ -1,0 +1,47 @@
+name: Vercel Deployment
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you are using for production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js for Frontend
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Specify your Node.js version
+
+      - name: Install Frontend Dependencies
+        working-directory: TODO-APP/frontend
+        run: |
+          npm install
+
+      - name: Build Frontend
+        working-directory: TODO-APP/frontend
+        run: |
+          npm run build
+
+      - name: Set up Python for Backend
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'  # Specify the Python version you're working with
+
+      - name: Install Backend Dependencies
+        working-directory: TODO-APP/backend
+        run: |
+          pip install -r TODO-APP/backend/requirements.txt
+
+      - name: Deploy to Vercel
+        run: |
+          curl -fsSL https://vercel.com/download -o vercel.tar.gz
+          tar -xzf vercel.tar.gz
+          sudo mv vercel /usr/local/bin
+          vercel login ${{ secrets.VERCEL_EMAIL }}
+          vercel deploy --prod --token ${{ secrets.VERCEL_TOKEN }}

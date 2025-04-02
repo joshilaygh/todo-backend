@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "TODO-APP/frontend/package.json",
+        "use": "@vercel/static-build", 
+        "config": {
+          "distDir": "TODO-APP/frontend/build" 
+        }
+      },
+      {
+        "src": "TODO-APP/backend/wsgi.py",
+        "use": "@vercel/python", 
+        "config": {
+          "maxDuration": 10
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "TODO-APP/frontend/build/$1"
+      },
+      {
+        "src": "/api/(.*)",
+        "dest": "TODO-APP/backend/wsgi.py"
+      }
+    ]
+  }
+  
