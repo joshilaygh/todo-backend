@@ -3,7 +3,7 @@ name: Vercel Deployment
 on:
   push:
     branches:
-      - main  # Adjust this to the branch you are using for production
+      - main
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python for Backend
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'  # Specify the Python version you're working with
+          python-version: '3.9'
 
       - name: Install Backend Dependencies
         working-directory: TODO-APP/backend

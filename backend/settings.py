@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost'] #this is changed
 CSRF_TRUSTED_ORIGINS = ['https://your-vercel-project.vercel.app']
 
 
