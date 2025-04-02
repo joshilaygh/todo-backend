@@ -23,16 +23,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd backend  # Navigate to the backend directory where requirements.txt is located
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run Migrations
         run: |
-          cd backend  # Ensure we're in the backend directory
           python manage.py migrate  # Apply database migrations
 
       - name: Run tests
         run: |
-          cd backend  # Navigate to the backend directory
           python manage.py test
