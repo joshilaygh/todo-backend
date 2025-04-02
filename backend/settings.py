@@ -93,6 +93,7 @@ DATABASES = {
         'PASSWORD': 'npg_mqh0g4YyPLIQ',
         'HOST': 'ep-rough-queen-a7kd9pn2-pooler.ap-southeast-2.aws.neon.tech',
         'PORT': '5432',
+        'OPTIONS': {'sslmode': 'require'}
     }
 }
 
