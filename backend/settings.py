@@ -87,12 +87,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'todoapp'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'root'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '3306'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'todoappdb',
+        'USER': 'todoappdb_owner',
+        'PASSWORD': 'npg_mqh0g4YyPLIQ',
+        'HOST': 'ep-rough-queen-a7kd9pn2-pooler.ap-southeast-2.aws.neon.tech',
+        'PORT': '5432',
     }
 }
 
